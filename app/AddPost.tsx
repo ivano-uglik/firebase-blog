@@ -46,16 +46,28 @@ export default function AddPost() {
           id="post"
           rows={8}
           onChange={(e) => setPost(e.target.value)}
-          className="p-2 border-2 border-slate-800 rounded-3xl"
+          className="p-2 border-2 border-slate-800 rounded-3xl rounded-br-none"
         />
         <button type="submit">Add post</button>
       </form>
-      <div className="flex flex-col basis-1/3 border rounded-2xl p-4 overflow break-words ">
-        <h1 className="text-center font-bold te xt-xl">Preview: </h1>
-        {image && <img src={URL.createObjectURL(image)} className="w-32" />}
-        <h2>{title}</h2>
-        <h4>{condensed}</h4>
-        <p>{post}</p>
+      <div className="basis-1/3">
+        <h1 className="text-center font-bold text-3xl pb-4">Preview: </h1>
+        <div className="border rounded-3xl w-full h-full">
+          <div className="grid h-full place-items-center">
+            <div className="border border-slate-900 w-[20rem] rounded-3xl">
+              {image && (
+                <img
+                  src={URL.createObjectURL(image)}
+                  className="w-full rounded-t-3xl h-36 object-cover"
+                />
+              )}
+              <div className="p-2 flex flex-col gap-4">
+                <h2 className="text-2xl text-center font-bold">{title}</h2>
+                <h4 className="text-justify">{condensed}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
